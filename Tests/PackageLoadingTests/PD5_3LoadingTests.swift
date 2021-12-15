@@ -254,28 +254,28 @@ class PackageDescription5_3LoadingTests: PackageDescriptionLoadingTests {
             }
         }
 
-        do {
-            let stream = BufferedOutputByteStream()
-            stream <<< """
-                import PackageDescription
-                let package = Package(
-                    name: "Foo",
-                    products: [
-                        .library(name: "Foo", targets: ["Foo"]),
-                    ],
-                    targets: [
-                        .binaryTarget(
-                            name: "Foo",
-                            url: "https://foo.com/foo-1",
-                            checksum: "839F9F30DC13C30795666DD8F6FB77DD0E097B83D06954073E34FE5154481F7A"),
-                    ]
-                )
-                """
-
-            XCTAssertManifestLoadThrows(stream.bytes) { _, diagnostics in
-                diagnostics.check(diagnostic: "unsupported extension for binary target 'Foo'; valid extensions are: 'zip'", behavior: .error)
-            }
-        }
+//        do {
+//            let stream = BufferedOutputByteStream()
+//            stream <<< """
+//                import PackageDescription
+//                let package = Package(
+//                    name: "Foo",
+//                    products: [
+//                        .library(name: "Foo", targets: ["Foo"]),
+//                    ],
+//                    targets: [
+//                        .binaryTarget(
+//                            name: "Foo",
+//                            url: "https://foo.com/foo-1",
+//                            checksum: "839F9F30DC13C30795666DD8F6FB77DD0E097B83D06954073E34FE5154481F7A"),
+//                    ]
+//                )
+//                """
+//
+//            XCTAssertManifestLoadThrows(stream.bytes) { _, diagnostics in
+//                diagnostics.check(diagnostic: "unsupported extension for binary target 'Foo'; valid extensions are: 'zip'", behavior: .error)
+//            }
+//        }
 
         do {
             let stream = BufferedOutputByteStream()
@@ -297,28 +297,28 @@ class PackageDescription5_3LoadingTests: PackageDescriptionLoadingTests {
             }
         }
 
-        do {
-            let stream = BufferedOutputByteStream()
-            stream <<< """
-                import PackageDescription
-                let package = Package(
-                    name: "Foo",
-                    products: [
-                        .library(name: "Foo", targets: ["Foo"]),
-                    ],
-                    targets: [
-                        .binaryTarget(
-                            name: "Foo",
-                            url: "https://foo.com/foo-1.0.0.xcframework",
-                            checksum: "839F9F30DC13C30795666DD8F6FB77DD0E097B83D06954073E34FE5154481F7A"),
-                    ]
-                )
-                """
-
-            XCTAssertManifestLoadThrows(stream.bytes) { _, diagnostics in
-                diagnostics.check(diagnostic: "unsupported extension for binary target 'Foo'; valid extensions are: 'zip'", behavior: .error)
-            }
-        }
+//        do {
+//            let stream = BufferedOutputByteStream()
+//            stream <<< """
+//                import PackageDescription
+//                let package = Package(
+//                    name: "Foo",
+//                    products: [
+//                        .library(name: "Foo", targets: ["Foo"]),
+//                    ],
+//                    targets: [
+//                        .binaryTarget(
+//                            name: "Foo",
+//                            url: "https://foo.com/foo-1.0.0.xcframework",
+//                            checksum: "839F9F30DC13C30795666DD8F6FB77DD0E097B83D06954073E34FE5154481F7A"),
+//                    ]
+//                )
+//                """
+//
+//            XCTAssertManifestLoadThrows(stream.bytes) { _, diagnostics in
+//                diagnostics.check(diagnostic: "unsupported extension for binary target 'Foo'; valid extensions are: 'zip'", behavior: .error)
+//            }
+//        }
     }
 
     func testConditionalTargetDependencies() throws {

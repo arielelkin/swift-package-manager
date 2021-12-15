@@ -519,12 +519,14 @@ public final class ManifestLoader: ManifestLoaderProtocol {
                 ))
             }
 
-            let validExtensions = isRemote ? ["zip"] : ["xcframework"]
-            if !validExtensions.contains(location.pathExtension) {
-                try diagnostics.emit(.unsupportedBinaryLocationExtension(
-                    targetName: target.name,
-                    validExtensions: validExtensions
-                ))
+            if !isRemote {
+                let validExtensions = ["xcframework"]
+                if !validExtensions.contains(location.pathExtension) {
+                    try diagnostics.emit(.unsupportedBinaryLocationExtension(
+                        targetName: target.name,
+                        validExtensions: validExtensions
+                    ))
+                }
             }
         }
     }
